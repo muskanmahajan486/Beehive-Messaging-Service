@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="lib" path="build/project/auto-updated/do-not-modify/lib/checkstyle-5.7/checkstyle-5.7-all.jar"/>
+	<classpathentry kind="lib" path="build/project/auto-updated/do-not-modify/lib/cobertura-2.0.3-orpatch-1/cobertura-2.0.3.jar"/>
+	<classpathentry kind="lib" path="build/project/auto-updated/do-not-modify/lib/cobertura-2.0.3-orpatch-1/lib/asm-4.1.jar"/>
+	<classpathentry kind="lib" path="build/project/auto-updated/do-not-modify/lib/cobertura-2.0.3-orpatch-1/lib/asm-analysis-4.1.jar"/>
+	<classpathentry kind="lib" path="build/project/auto-updated/do-not-modify/lib/cobertura-2.0.3-orpatch-1/lib/asm-commons-4.1.jar"/>
+	<classpathentry kind="lib" path="build/project/auto-updated/do-not-modify/lib/cobertura-2.0.3-orpatch-1/lib/asm-tree-4.1.jar"/>
+	<classpathentry kind="lib" path="build/project/auto-updated/do-not-modify/lib/cobertura-2.0.3-orpatch-1/lib/asm-util-4.1.jar"/>
+	<classpathentry kind="lib" path="build/project/auto-updated/do-not-modify/lib/cobertura-2.0.3-orpatch-1/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="build/project/auto-updated/do-not-modify/lib/cobertura-2.0.3-orpatch-1/lib/icu4j-2.6.1.jar"/>
+	<classpathentry kind="lib" path="build/project/auto-updated/do-not-modify/lib/cobertura-2.0.3-orpatch-1/lib/jaxen-1.1-beta-8.jar"/>
+	<classpathentry kind="lib" path="build/project/auto-updated/do-not-modify/lib/cobertura-2.0.3-orpatch-1/lib/jdom-1.0.jar"/>
+	<classpathentry kind="lib" path="build/project/auto-updated/do-not-modify/lib/cobertura-2.0.3-orpatch-1/lib/jetty-6.1.14.jar"/>
+	<classpathentry kind="lib" path="build/project/auto-updated/do-not-modify/lib/cobertura-2.0.3-orpatch-1/lib/jetty-util-6.1.14.jar"/>
+	<classpathentry kind="lib" path="build/project/auto-updated/do-not-modify/lib/cobertura-2.0.3-orpatch-1/lib/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="build/project/auto-updated/do-not-modify/lib/cobertura-2.0.3-orpatch-1/lib/oro-2.0.8.jar"/>
+	<classpathentry kind="lib" path="build/project/auto-updated/do-not-modify/lib/cobertura-2.0.3-orpatch-1/lib/servlet-api-2.5-6.1.14.jar"/>
+	<classpathentry kind="lib" path="build/project/auto-updated/do-not-modify/lib/cobertura-2.0.3-orpatch-1/lib/tagsoup-0.9.7.jar"/>
+	<classpathentry kind="lib" path="build/project/auto-updated/do-not-modify/lib/cobertura-2.0.3-orpatch-1/lib/xmlParserAPIs-2.6.2.jar"/>
+	<classpathentry kind="lib" path="build/project/auto-updated/do-not-modify/lib/cobertura-2.0.3-orpatch-1/lib/xom-1.0b3.jar"/>
+	<classpathentry kind="lib" path="build/project/auto-updated/do-not-modify/lib/testng-6.8/testng-6.8.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.launching.macosx.MacOSXType/Java SE 6 (MacOS X Default)"/>
+	<classpathentry kind="lib" path="lib/jersey/jersey-common.jar"/>
+	<classpathentry kind="lib" path="lib/jersey/jersey-container-servlet-core.jar"/>
+	<classpathentry kind="lib" path="lib/jersey/jersey-container-servlet.jar"/>
+	<classpathentry kind="lib" path="lib/jersey/jersey-server.jar"/>
+	<classpathentry kind="lib" path="lib/jersey-ext/aopalliance-repackaged-2.3.0-b05.jar"/>
+	<classpathentry kind="lib" path="lib/jersey-ext/asm-debug-all-5.0.2.jar"/>
+	<classpathentry kind="lib" path="lib/jersey-ext/hk2-api-2.3.0-b05.jar"/>
+	<classpathentry kind="lib" path="lib/jersey-ext/hk2-locator-2.3.0-b05.jar"/>
+	<classpathentry kind="lib" path="lib/jersey-ext/hk2-utils-2.3.0-b05.jar"/>
+	<classpathentry kind="lib" path="lib/jersey-ext/javassist-3.18.1-GA.jar"/>
+	<classpathentry kind="lib" path="lib/jersey-ext/javax.annotation-api-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/jersey-ext/javax.inject-2.3.0-b05.jar"/>
+	<classpathentry kind="lib" path="lib/jersey-ext/jaxb-api-2.2.7.jar"/>
+	<classpathentry kind="lib" path="lib/jersey-ext/jersey-guava-2.9.jar"/>
+	<classpathentry kind="lib" path="lib/jersey-ext/org.osgi.core-4.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/jersey-ext/osgi-resource-locator-1.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/jersey-ext/persistence-api-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/jersey-ext/validation-api-1.1.0.Final.jar"/>
+	<classpathentry kind="lib" path="lib/jersey-ext/javax.ws.rs-api-2.0.jar"/>
+	<classpathentry kind="lib" path="lib/compile/javax.servlet-api-3.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/jersey/jersey-client.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>
