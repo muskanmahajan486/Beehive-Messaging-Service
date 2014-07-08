@@ -196,14 +196,18 @@
 	  <copy todir = "${output.dir}/${war.name}-${release.version}/WEB-INF/lib"
 	        flatten = "true"
 	        overwrite = "true">
-      <fileset dir = "${lib.dir}/jersey">
-				<include name = "**/*.jar"/>
-				<exclude name = "LICENSE*"/>
-		  </fileset>
-	    <fileset dir = "${lib.dir}/jersey-ext">
-        <include name = "**/*.jar"/>
-			  <exclude name = "LICENSE*"/>
-		  </fileset>
+            <fileset dir = "${lib.dir}/core">
+              <include name = "**/*.jar"/>
+              <exclude name = "LICENSE*"/>
+            </fileset>
+            <fileset dir = "${lib.dir}/jersey">
+              <include name = "**/*.jar"/>
+              <exclude name = "LICENSE*"/>
+            </fileset>
+            <fileset dir = "${lib.dir}/jersey-ext">
+              <include name = "**/*.jar"/>
+              <exclude name = "LICENSE*"/>
+            </fileset>
 	  </copy>
 
 	  <!-- Create a compressed Web Archive... -->
