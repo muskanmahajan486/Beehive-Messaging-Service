@@ -39,8 +39,10 @@ import com.twilio.sdk.resource.instance.Message;
 public class MessageResource
 {
   // Find your Account Sid and Token at twilio.com/user/account
-  public static final String ACCOUNT_SID = "AC16455642ff6433eb01a8d7d712174c04"; // "AC209a0ca3d9a192180bdd727a8a6779c5";
-  public static final String AUTH_TOKEN = "abe99b7ba357c701536ab048c8eeb199"; // "75228acce647d88068bb764dcb32a839";
+  public static final String ACCOUNT_SID = "AC16455642ff6433eb01a8d7d712174c04";
+  // "AC209a0ca3d9a192180bdd727a8a6779c5";
+  public static final String AUTH_TOKEN = "abe99b7ba357c701536ab048c8eeb199";
+  // "75228acce647d88068bb764dcb32a839";
   /*
    * Exception in thread "main" java.lang.IllegalArgumentException: AuthToken ''
    * is not valid. at
@@ -76,10 +78,12 @@ public class MessageResource
 
     MessageFactory messageFactory = client.getAccount().getMessageFactory();
     Message message;
-    try {
+    try
+    {
       message = messageFactory.create(params);
       System.out.println(message.getSid());
-    } catch (TwilioRestException e) {
+    } catch (TwilioRestException e)
+    {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
