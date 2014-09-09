@@ -20,13 +20,25 @@
  */
 package org.openremote.messaging.domain;
 
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class SMSMessage
 {
-
+  private List<String> recipients;
   private String message;
+
+  public List<String> getRecipients()
+  {
+    return recipients;
+  }
+
+  public void setRecipients(List<String> recipients)
+  {
+    this.recipients = recipients;
+  }
 
   public String getMessage()
   {

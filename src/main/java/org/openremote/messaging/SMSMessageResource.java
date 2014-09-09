@@ -68,17 +68,17 @@ public class SMSMessageResource
   @Produces("application/json")
   public Response sendSMSMessage(@Context SecurityContext sc, SMSMessage message)
   {
-    
-    
-    System.out.println("Asked to send message " + message.getMessage());
-    
-    
     TwilioRestClient client = new TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN);
 
     // Build a filter for the MessageList
     List<NameValuePair> params = new ArrayList<NameValuePair>();
-    params.add(new BasicNameValuePair("Body", "Test SMS message"));
-    params.add(new BasicNameValuePair("To", "+32473983436"));
+    params.add(new BasicNameValuePair("Body", message.getMessage()));
+
+    // TODO: In this very first proto, we always send to first recipient
+    // must check there's at least one recipient and must iterate over all of them
+    // sending each message individually (no batch API on Twilio)
+    params.add(new BasicNameValuePair("To", message.getRecipients().get(0))); // "+32473983436"));
+    
 //    params.add(new BasicNameValuePair("From", "+13853558104")); // Real OR account
     params.add(new BasicNameValuePair("From", "+15005550006")); // Test Twilio account
     
