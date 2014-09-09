@@ -23,10 +23,12 @@ package org.openremote.messaging;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.ws.rs.GET;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -58,9 +60,10 @@ public class SMSMessageResource
    * TwilioTest.main(TwilioTest.java:19)
    */
 
-  @GET
-  @Produces("text/plain")
-  public String getHello()
+  @POST
+  @Consumes("application/json")
+  @Produces("application/json")
+  public Response sendSMSMessage()
   {
     TwilioRestClient client = new TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN);
 
@@ -94,7 +97,7 @@ public class SMSMessageResource
       e.printStackTrace();
     }
     
-    return "test done";
+    return Response.ok().build();
   }
 
 }
