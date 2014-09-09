@@ -39,9 +39,9 @@ import com.twilio.sdk.resource.instance.Message;
 public class MessageResource
 {
   // Find your Account Sid and Token at twilio.com/user/account
-  public static final String ACCOUNT_SID = "AC16455642ff6433eb01a8d7d712174c04";
+  public static final String ACCOUNT_SID = "AC2239c52fd05c95ebfb27411630508947";
   // "AC209a0ca3d9a192180bdd727a8a6779c5";
-  public static final String AUTH_TOKEN = "abe99b7ba357c701536ab048c8eeb199";
+  public static final String AUTH_TOKEN = "6ea44af74aeac64d8a1ee494b09dd5ed";
   // "75228acce647d88068bb764dcb32a839";
   /*
    * Exception in thread "main" java.lang.IllegalArgumentException: AuthToken ''
@@ -63,11 +63,12 @@ public class MessageResource
     List<NameValuePair> params = new ArrayList<NameValuePair>();
     params.add(new BasicNameValuePair("Body", "Test SMS message"));
     params.add(new BasicNameValuePair("To", "+32473983436"));
-    // params.add(new BasicNameValuePair("From", "+3278482066"));
-    params.add(new BasicNameValuePair("From", "+15005550006"));
+//    params.add(new BasicNameValuePair("From", "+13853558104")); // Real OR account
+    params.add(new BasicNameValuePair("From", "+15005550006")); // Test Twilio account
+    
     /*
      * Exception in thread "main" com.twilio.sdk.TwilioRestException: The From
-     * phone number +3278482066 is not a valid, SMS-capable inbound phone number
+     * phone number +13853558104 is not a valid, SMS-capable inbound phone number
      * or short code for your account. at
      * com.twilio.sdk.TwilioRestException.parseResponse
      * (TwilioRestException.java:74) at
