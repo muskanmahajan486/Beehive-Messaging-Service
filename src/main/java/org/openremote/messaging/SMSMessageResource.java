@@ -28,10 +28,13 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.SecurityContext;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.openremote.messaging.domain.SMSMessage;
 
 import com.twilio.sdk.TwilioRestClient;
 import com.twilio.sdk.TwilioRestException;
@@ -63,8 +66,13 @@ public class SMSMessageResource
   @POST
   @Consumes("application/json")
   @Produces("application/json")
-  public Response sendSMSMessage()
+  public Response sendSMSMessage(@Context SecurityContext sc, SMSMessage message)
   {
+    
+    
+    System.out.println("Asked to send message " + message.getMessage());
+    
+    
     TwilioRestClient client = new TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN);
 
     // Build a filter for the MessageList
@@ -86,11 +94,11 @@ public class SMSMessageResource
      */
 
     MessageFactory messageFactory = client.getAccount().getMessageFactory();
-    Message message;
+    Message twilioMessage;
     try
     {
-      message = messageFactory.create(params);
-      System.out.println(message.getSid());
+      twilioMessage = messageFactory.create(params);
+      System.out.println(twilioMessage.getSid());
     } catch (TwilioRestException e)
     {
       // TODO Auto-generated catch block
