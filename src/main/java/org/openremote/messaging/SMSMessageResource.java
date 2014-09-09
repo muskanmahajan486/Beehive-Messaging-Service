@@ -36,7 +36,7 @@ import com.twilio.sdk.resource.factory.MessageFactory;
 import com.twilio.sdk.resource.instance.Message;
 
 @Path("message")
-public class MessageResource
+public class SMSMessageResource
 {
   // Find your Account Sid and Token at twilio.com/user/account
   public static final String ACCOUNT_SID = "AC2239c52fd05c95ebfb27411630508947";

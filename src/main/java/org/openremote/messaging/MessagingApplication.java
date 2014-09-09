@@ -34,7 +34,7 @@ public class MessagingApplication extends Application
   {
     final Set<Class<?>> classes = new HashSet<Class<?>>();
     
-    classes.add(MessageResource.class);
+    classes.add(SMSMessageResource.class);
     
     return classes;
   }
