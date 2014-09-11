@@ -21,8 +21,6 @@
 package org.openremote.messaging;
 
 import java.util.ArrayList;
-
-import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletConfig;
@@ -67,8 +65,9 @@ public class SMSMessageResource
                                  @Context SecurityContext sc,
                                  SMSMessage message)
   {
-    TwilioRestClient client = new TwilioRestClient(config.getInitParameter(MessagingParameterNames.MESSAGING_TWILIO_ACCOUNT_SID),
-                                                   config.getInitParameter(MessagingParameterNames.MESSAGING_TWILIO_ACCOUNT_SID));
+    TwilioRestClient client = new TwilioRestClient(
+        config.getInitParameter(MessagingParameterNames.MESSAGING_TWILIO_ACCOUNT_SID),
+        config.getInitParameter(MessagingParameterNames.MESSAGING_TWILIO_ACCOUNT_SID));
 
     // Build a filter for the MessageList
     List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -79,7 +78,8 @@ public class SMSMessageResource
     // sending each message individually (no batch API on Twilio)
     params.add(new BasicNameValuePair("To", message.getRecipients().get(0)));
     
-    params.add(new BasicNameValuePair("From", config.getInitParameter(MessagingParameterNames.MESSAGING_TWILIO_SMS_FROM_NUMBER)));
+    params.add(new BasicNameValuePair("From",
+        config.getInitParameter(MessagingParameterNames.MESSAGING_TWILIO_SMS_FROM_NUMBER)));
     
     /*
      * Exception in thread "main" com.twilio.sdk.TwilioRestException: The From
