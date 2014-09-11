@@ -21,8 +21,11 @@
 package org.openremote.messaging;
 
 import java.util.ArrayList;
+
+import java.util.Enumeration;
 import java.util.List;
 
+import javax.servlet.ServletConfig;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -44,15 +47,9 @@ import com.twilio.sdk.resource.instance.Message;
 @Path("accounts/{accountId}/SMSMessages")
 public class SMSMessageResource
 {
-
   @PathParam(value = "accountId")
   String accountId;
 
-  // Find your Account Sid and Token at twilio.com/user/account
-  public static final String ACCOUNT_SID = "AC2239c52fd05c95ebfb27411630508947";
-  // "AC209a0ca3d9a192180bdd727a8a6779c5";
-  public static final String AUTH_TOKEN = "6ea44af74aeac64d8a1ee494b09dd5ed";
-  // "75228acce647d88068bb764dcb32a839";
   /*
    * Exception in thread "main" java.lang.IllegalArgumentException: AuthToken ''
    * is not valid. at
@@ -66,9 +63,12 @@ public class SMSMessageResource
   @POST
   @Consumes("application/json")
   @Produces("application/json")
-  public Response sendSMSMessage(@Context SecurityContext sc, SMSMessage message)
+  public Response sendSMSMessage(@Context ServletConfig config,
+                                 @Context SecurityContext sc,
+                                 SMSMessage message)
   {
-    TwilioRestClient client = new TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN);
+    TwilioRestClient client = new TwilioRestClient(config.getInitParameter(MessagingParameterNames.MESSAGING_TWILIO_ACCOUNT_SID),
+                                                   config.getInitParameter(MessagingParameterNames.MESSAGING_TWILIO_ACCOUNT_SID));
 
     // Build a filter for the MessageList
     List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -77,10 +77,9 @@ public class SMSMessageResource
     // TODO: In this very first proto, we always send to first recipient
     // must check there's at least one recipient and must iterate over all of them
     // sending each message individually (no batch API on Twilio)
-    params.add(new BasicNameValuePair("To", message.getRecipients().get(0))); // "+32473983436"));
+    params.add(new BasicNameValuePair("To", message.getRecipients().get(0)));
     
-//    params.add(new BasicNameValuePair("From", "+13853558104")); // Real OR account
-    params.add(new BasicNameValuePair("From", "+15005550006")); // Test Twilio account
+    params.add(new BasicNameValuePair("From", config.getInitParameter(MessagingParameterNames.MESSAGING_TWILIO_SMS_FROM_NUMBER)));
     
     /*
      * Exception in thread "main" com.twilio.sdk.TwilioRestException: The From
