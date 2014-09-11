@@ -67,7 +67,7 @@ public class SMSMessageResource
   {
     TwilioRestClient client = new TwilioRestClient(
         config.getInitParameter(MessagingParameterNames.MESSAGING_TWILIO_ACCOUNT_SID),
-        config.getInitParameter(MessagingParameterNames.MESSAGING_TWILIO_ACCOUNT_SID));
+        config.getInitParameter(MessagingParameterNames.MESSAGING_TWILIO_AUTH_TOKEN));
 
     // Build a filter for the MessageList
     List<NameValuePair> params = new ArrayList<NameValuePair>();
