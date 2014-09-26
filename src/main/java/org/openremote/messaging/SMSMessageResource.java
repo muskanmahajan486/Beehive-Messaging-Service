@@ -31,6 +31,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.SecurityContext;
 
 import org.apache.http.NameValuePair;
@@ -73,10 +74,18 @@ public class SMSMessageResource
     List<NameValuePair> params = new ArrayList<NameValuePair>();
     params.add(new BasicNameValuePair("Body", message.getMessage()));
 
-    // TODO: In this very first proto, we always send to first recipient
-    // must check there's at least one recipient and must iterate over all of them
-    // sending each message individually (no batch API on Twilio)
-    params.add(new BasicNameValuePair("To", message.getRecipients().get(0)));
+    if (message.getRecipients().size() <= 0)
+    {
+      return Response.status(Status.BAD_REQUEST).entity("TODO - appropriate error").build();
+    }
+    
+    for (String recipient : message.getRecipients())
+    {
+      // TODO: validate recipient is valid SMS number and potentially reformat
+      
+      // Sending each message individually (no batch API on Twilio)
+      params.add(new BasicNameValuePair("To", recipient));      
+    }
     
     params.add(new BasicNameValuePair("From",
         config.getInitParameter(MessagingParameterNames.MESSAGING_TWILIO_SMS_FROM_NUMBER)));
