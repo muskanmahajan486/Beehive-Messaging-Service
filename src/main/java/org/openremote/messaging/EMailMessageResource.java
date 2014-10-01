@@ -20,23 +20,35 @@
  */
 package org.openremote.messaging;
 
-import java.util.HashSet;
-import java.util.Set;
+import javax.servlet.ServletConfig;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.SecurityContext;
 
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
+import org.openremote.messaging.domain.EMailMessage;
 
-@ApplicationPath("/v1")
-public class MessagingApplication extends Application
+@Path("accounts/{accountId}/EMailMessages")
+public class EMailMessageResource
 {
-  @Override
-  public Set<Class<?>> getClasses()
+
+  @PathParam(value = "accountId")
+  String accountId;
+
+  @POST
+  @Consumes("application/json")
+  @Produces("application/json")
+  public Response sendEMailMessage(@Context ServletConfig config,
+                                 @Context SecurityContext sc,
+                                 EMailMessage message)
   {
-    final Set<Class<?>> classes = new HashSet<Class<?>>();
+    // TODO: implement e-mail sending using standard Java mail API
     
-    classes.add(SMSMessageResource.class);
-    classes.add(EMailMessageResource.class);
-    
-    return classes;
+    return Response.ok().build();
   }
+
 }

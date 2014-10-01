@@ -18,25 +18,47 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.openremote.messaging;
+package org.openremote.messaging.domain;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
+import javax.xml.bind.annotation.XmlRootElement;
 
-@ApplicationPath("/v1")
-public class MessagingApplication extends Application
+@XmlRootElement
+public class EMailMessage
 {
-  @Override
-  public Set<Class<?>> getClasses()
+  private List<String> recipients;
+  private String subject;
+  private String message;
+
+  public List<String> getRecipients()
   {
-    final Set<Class<?>> classes = new HashSet<Class<?>>();
-    
-    classes.add(SMSMessageResource.class);
-    classes.add(EMailMessageResource.class);
-    
-    return classes;
+    return recipients;
   }
+
+  public void setRecipients(List<String> recipients)
+  {
+    this.recipients = recipients;
+  }
+  
+  public String getSubject()
+  {
+    return subject;
+  }
+
+  public void setSubject(String subject)
+  {
+    this.subject = subject;
+  }
+
+  public String getMessage()
+  {
+    return message;
+  }
+
+  public void setMessage(String message)
+  {
+    this.message = message;
+  }
+
 }
