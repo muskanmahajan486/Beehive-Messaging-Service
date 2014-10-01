@@ -34,5 +34,7 @@
 	<classpathentry kind="lib" path="lib/core/json-simple/json-simple-1.1.1.jar"/>
 	<classpathentry kind="lib" path="lib/core/twilio/twilio-java-sdk-3.4.5.jar"/>
 	<classpathentry kind="lib" path="lib/core/javax.ws.rs-2.0/javax.ws.rs-api-2.0.jar"/>
+	<classpathentry kind="lib" path="lib/core/javamail-1.5.2/mailapi-1.5.2.jar"/>
+	<classpathentry kind="lib" path="lib/core/javamail-1.5.2/smtp-1.5.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
