@@ -20,6 +20,7 @@
  */
 package org.openremote.messaging;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.Properties;
 
@@ -81,8 +82,26 @@ public class EMailMessageResource
 
     Message msg = new MimeMessage(session);
     try
-    {
-      msg.setFrom(new InternetAddress(config.getInitParameter("mail.smtp.from")));
+    {      
+      if (message.getFrom() != null)
+      {
+        try
+        {
+          msg.setFrom(new InternetAddress(message.getFrom().getEmail(), message.getFrom().getName()));
+        }
+        catch (UnsupportedEncodingException e)
+        {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        }
+      }
+      else
+      {
+        msg.setFrom(new InternetAddress(config.getInitParameter("mail.smtp.from")));        
+      }
+      
+      
+      
       for (String recipient : message.getRecipients())
       {
         msg.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));

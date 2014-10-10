@@ -30,6 +30,7 @@ public class EMailMessage
   private List<String> recipients;
   private String subject;
   private String message;
+  private From from;
 
   public List<String> getRecipients()
   {
@@ -61,4 +62,40 @@ public class EMailMessage
     this.message = message;
   }
 
+  public From getFrom()
+  {
+    return from;
+  }
+
+  public void setFrom(From from)
+  {
+    this.from = from;
+  }
+
+  public class From
+  {
+    private String email;
+    private String name;
+
+    public String getEmail()
+    {
+      return email;
+    }
+
+    public void setEmail(String email)
+    {
+      this.email = email;
+    }
+
+    public String getName()
+    {
+      return name;
+    }
+
+    public void setName(String name)
+    {
+      this.name = name;
+    }
+
+  }
 }
