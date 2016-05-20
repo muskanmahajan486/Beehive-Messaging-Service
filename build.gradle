@@ -22,5 +22,8 @@ dependencies {
     compile "javax.ws.rs:javax.ws.rs-api:$jaxrsVersion"
 
     providedCompile "javax.servlet:javax.servlet-api:$servletVersion"
+}
 
+war {
+    baseName = 'openremote-messaging'
 }
