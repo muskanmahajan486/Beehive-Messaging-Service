@@ -5,3 +5,5 @@ build/package/
 build/test/
 build/project/auto-updated/do-not-modify/lib/java-1.6/
 
+.gradle
+build
