@@ -82,4 +82,50 @@
     <servlet-name>org.openremote.messaging</servlet-name>
     <url-pattern>/v1/*</url-pattern>
   </servlet-mapping>
+  
+  <security-constraint>
+    <display-name>Messaging Security</display-name>
+
+    <web-resource-collection>
+      <web-resource-name>All resources</web-resource-name>
+      <description>
+      </description>
+      <url-pattern>/*</url-pattern>
+    </web-resource-collection>
+
+    <auth-constraint>
+      <role-name>user</role-name>
+      <role-name>twilio-service</role-name>
+    </auth-constraint>
+
+    <!-- Enforce HTTPS access...
+    <user-data-constraint>
+      <description>
+        All service access requests must arrive through confidential (HTTPS) communication
+        channel.
+      </description>
+      <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+    -->
+  </security-constraint>
+
+  <login-config>
+    <auth-method>BASIC</auth-method>
+    <realm-name>Messaging</realm-name>
+  </login-config>
+
+  <security-role>
+    <description>
+      Regular user of the system
+    </description>
+    <role-name>user</role-name>
+  </security-role>
+
+  <security-role>
+    <description>
+      Specific user to allow Twilio Voice Service to access required information / services
+    </description>
+    <role-name>twilio-service</role-name>
+  </security-role>
+  
 </web-app>
