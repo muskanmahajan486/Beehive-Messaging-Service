@@ -26,4 +26,18 @@ dependencies {
 
 war {
     baseName = 'openremote-messaging'
+
+    if (project.hasProperty("targetEnv")) {
+        def targetEnvFolder = 'environments/' + targetEnv;
+        if (new File(targetEnvFolder).exists()) {
+            from(targetEnvFolder) {
+                include '*.properties'
+                into ('WEB-INF/classes')
+            }
+        } else {
+            println "*** No configuration exists for target environment"
+        }
+    } else {
+        println "*** No target environment defined"
+    }
 }
