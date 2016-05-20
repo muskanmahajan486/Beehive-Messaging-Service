@@ -30,7 +30,7 @@ public class ServiceConfiguration
   }
 
   public String getSmtpHost() {
-    return getResourceBundle().getString("mail.smtp.from");
+    return getResourceBundle().getString("mail.smtp.host");
   }
 
   public String getSmtpFrom() {
