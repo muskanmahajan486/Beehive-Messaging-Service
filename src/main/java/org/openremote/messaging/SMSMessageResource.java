@@ -1,6 +1,6 @@
 /*
  * OpenRemote, the Home of the Digital Home.
- * Copyright 2008-2014, OpenRemote Inc.
+ * Copyright 2008-2016, OpenRemote Inc.
  *
  * See the contributors.txt file in the distribution for a
  * full listing of individual contributors.
@@ -23,7 +23,7 @@ package org.openremote.messaging;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.ServletConfig;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -46,6 +46,9 @@ import com.twilio.sdk.resource.instance.Message;
 @Path("accounts/{accountId}/SMSMessages")
 public class SMSMessageResource
 {
+  @Inject
+  ServiceConfiguration configuration;
+
   @PathParam(value = "accountId")
   String accountId;
 
@@ -62,13 +65,9 @@ public class SMSMessageResource
   @POST
   @Consumes("application/json")
   @Produces("application/json")
-  public Response sendSMSMessage(@Context ServletConfig config,
-                                 @Context SecurityContext sc,
-                                 SMSMessage message)
+  public Response sendSMSMessage(@Context SecurityContext sc, SMSMessage message)
   {
-    TwilioRestClient client = new TwilioRestClient(
-        config.getInitParameter(MessagingParameterNames.MESSAGING_TWILIO_ACCOUNT_SID),
-        config.getInitParameter(MessagingParameterNames.MESSAGING_TWILIO_AUTH_TOKEN));
+    TwilioRestClient client = new TwilioRestClient(configuration.getTwilioAccountSid(), configuration.getTwilioAuthToken());
 
     // Build a filter for the MessageList
     List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -87,9 +86,8 @@ public class SMSMessageResource
       params.add(new BasicNameValuePair("To", recipient));      
     }
     
-    params.add(new BasicNameValuePair("From",
-        config.getInitParameter(MessagingParameterNames.MESSAGING_TWILIO_SMS_FROM_NUMBER)));
-    
+    params.add(new BasicNameValuePair("From", configuration.getTwilioSmsFromNumber()));
+
     /*
      * Exception in thread "main" com.twilio.sdk.TwilioRestException: The From
      * phone number +13853558104 is not a valid, SMS-capable inbound phone number

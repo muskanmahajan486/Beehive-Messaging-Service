@@ -1,6 +1,6 @@
 /*
  * OpenRemote, the Home of the Digital Home.
- * Copyright 2008-2014, OpenRemote Inc.
+ * Copyright 2008-2016, OpenRemote Inc.
  *
  * See the contributors.txt file in the distribution for a
  * full listing of individual contributors.
@@ -24,6 +24,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.Properties;
 
+import javax.inject.Inject;
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -52,16 +53,18 @@ public class EMailMessageResource
   @PathParam(value = "accountId")
   String accountId;
 
+  @Inject
+  ServiceConfiguration configuration;
+
   @POST
   @Consumes("application/json")
   @Produces("application/json")
-  public Response sendEMailMessage(@Context final ServletConfig config,
-      @Context SecurityContext sc, EMailMessage message)
+  public Response sendEMailMessage(@Context SecurityContext sc, EMailMessage message)
   {
     // TODO: validate payload and return appropriate error messages
-    
+
     Properties props = System.getProperties();
-    props.put("mail.smtp.host", config.getInitParameter("mail.smtp.host"));
+    props.put("mail.smtp.host", configuration.getSmtpHost());
     props.put("mail.smtp.ssl.enable", "true");
     props.put("mail.smtp.auth", "true");
     props.put("mail.smtp.starttls.enable", "true");
@@ -72,9 +75,7 @@ public class EMailMessageResource
       @Override
       protected PasswordAuthentication getPasswordAuthentication()
       {
-        return new PasswordAuthentication(
-            config.getInitParameter("mail.smtp.user"),
-            config.getInitParameter("mail.smtp.password"));
+        return new PasswordAuthentication(configuration.getSmtpUser(), configuration.getSmtpPassword());
       }
     });
 
@@ -97,7 +98,7 @@ public class EMailMessageResource
       }
       else
       {
-        msg.setFrom(new InternetAddress(config.getInitParameter("mail.smtp.from")));        
+        msg.setFrom(new InternetAddress(configuration.getSmtpFrom()));
       }
       
       

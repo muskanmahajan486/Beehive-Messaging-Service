@@ -49,33 +49,6 @@
         <param-name>javax.ws.rs.Application</param-name>
         <param-value>org.openremote.messaging.MessagingApplication</param-value>
       </init-param>
-      <init-param>
-        <param-name>org.openremote.messaging.twilio.accountSid</param-name>
-        <param-value></param-value>
-      </init-param>
-      <init-param>
-        <param-name>org.openremote.messaging.twilio.authToken</param-name>
-        <param-value></param-value>
-      </init-param>
-      <init-param>
-        <param-name>org.openremote.messaging.twilio.smsFromNumber</param-name>
-      </init-param>
-      <init-param>
-        <param-name>mail.smtp.host</param-name>
-        <param-value></param-value>
-      </init-param>
-      <init-param>
-        <param-name>mail.smtp.from</param-name>
-        <param-value></param-value>
-      </init-param>
-      <init-param>
-        <param-name>mail.smtp.user</param-name>
-        <param-value></param-value>
-      </init-param>
-      <init-param>
-        <param-name>mail.smtp.password</param-name>
-        <param-value></param-value>
-      </init-param>
       <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
